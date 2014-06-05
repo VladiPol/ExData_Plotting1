@@ -1,4 +1,4 @@
-plot2 <- function(){
+plot3 <- function(){
   # set working directory
   setwd('D:/Archiv/Vladimir/projekt/course/coursera/Exploratory_Data_Analysis/Project')
   
@@ -14,10 +14,13 @@ plot2 <- function(){
   hpc$DT <- DT
   
   # prepare the graphical device
-  png(filename ="plot2.png", width = 480, height = 480)
+  png(filename ="plot3.png", width = 480, height = 480)
   
   # plot the graphic
-  with(hpc, plot(DT, Global_active_power, type = "l", main = "", xlab = "", ylab = "Global Active Power (kilowatts)"))
+  with(hpc, plot(DT, Sub_metering_1, type = "l", xlab = "", ylab = "Energy sub meeting"))
+  lines(hpc$DT, hpc$Sub_metering_2, col = "red")
+  lines(hpc$DT, hpc$Sub_metering_3, col = "blue")
+  legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col = c("black","red", "blue"), lty = c(1,1))
   
   # explicitly close graphics device with dev.off()
   dev.off()
